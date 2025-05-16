@@ -134,8 +134,8 @@ class SerialLoggerApp:
                     if self.ser.in_waiting > 0:
                         line = self.ser.readline().decode('utf-8').strip()
                         timestamp = datetime.now()
-                        writer.writerow([timestamp.isoformat(), line])
-                        self.output_text.insert(tk.END, f"{timestamp.isoformat()}: {line}\n")
+                        writer.writerow([timestamp.strftime('%H:%M:%S.%f')[:-3], line])
+                        self.output_text.insert(tk.END, f"{timestamp.strftime('%H:%M:%S.%f')[:-3]}: {line}\n")
                         self.output_text.see(tk.END)
 
                         try:
